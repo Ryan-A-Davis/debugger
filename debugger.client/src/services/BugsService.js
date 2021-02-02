@@ -25,9 +25,9 @@ class BugsService {
   }
 
   async close(id) {
-    await api.put('api/bugs/' + id)
+    const data = await api.put('api/bugs/' + id)
     const index = AppState.bugs.findIndex(b => b.id === id)
-    AppState.bugs[index].closed = true
+    AppState.bugs[index] = data
   }
 }
 

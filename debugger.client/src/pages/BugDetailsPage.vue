@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" v-if="state.loaded">
     <div class="bugDetails" v-if="state.bug.creator">
       <div class="row my-5 py-5">
         <div class="col-3">
@@ -72,7 +72,9 @@ export default {
       try {
         await notesService.getAllNotes(state.bug.id)
       } catch (error) {
-
+        logger.error(error)
+      } finally {
+        state.loaded = true
       }
     })
     return {

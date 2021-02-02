@@ -28,7 +28,27 @@
     </div>
     <div class="row border-dark mx-2 py-5">
       <div class="col">
-        <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">
+                Title
+              </th>
+              <th scope="col">
+                Owner
+              </th>
+              <th scope="col">
+                Last Update
+              </th>
+              <th scope="col">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" />
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

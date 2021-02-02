@@ -1,7 +1,6 @@
 <template>
   <div class="notecomponent">
     <div class="row">
-      <i class="fa btn fa-trash text-danger" aria-hidden="true" @click="remove" v-if="state.account.id == noteProp.creatorId"></i>
       <div class="font-weight-bold">
         {{ noteProp.creator.name }}
         <div class="font-weight-normal">
@@ -10,6 +9,9 @@
       </div>
     </div>
   </div>
+  <button class="btn btn-danger" @click="remove">
+    Delete
+  </button>
 </template>
 
 <script>

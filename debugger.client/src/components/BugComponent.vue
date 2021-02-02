@@ -1,25 +1,25 @@
 <template>
-  <div class="bug row justify-content-around">
-    <div class="col-2">
+  <tr>
+    <td scope="row">
       <router-link :to="{name: 'BugDetails', params: {id: bugProp.id}}">
         <p>{{ bugProp.title }}</p>
       </router-link>
-    </div>
-    <div v-if="bugProp.creator" class="col-2">
-      <p>{{ bugProp.creator.name }}</p>
-    </div>
-    <div class="col-2">
-      <p>{{ bugProp.updatedAt }}</p>
-    </div>
-    <div class="col-2-offset-2">
+    </td>
+    <td>
+      <p v-if="bugProp.creator">
+        {{ bugProp.creator.name }}
+      </p>
+    </td>
+    <td> <p>{{ bugProp.updatedAt }}</p></td>
+    <td>
       <p v-if="bugProp.closed" class="text-danger">
         Closed
       </p>
       <p v-else class="text-success">
         Open
       </p>
-    </div>
-  </div>
+    </td>
+  </tr>
 </template>
 
 <script>
