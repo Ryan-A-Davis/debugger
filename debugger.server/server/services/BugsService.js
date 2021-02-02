@@ -17,11 +17,11 @@ class BugsService {
   }
 
   async close(req) {
-    const bug = await dbContext.Bugs.findOneAndUpdate({ _id: req.params.id, creatorId: req.userInfo.id })
+    const bug = await dbContext.Bugs.findOneAndUpdate({ _id: req.params.id, creatorId: req.userInfo.id }, { closed: true })
     if (!bug) {
       throw new BadRequest('You are not the owner, or the bug is already squashed!')
     }
-    return 'bug dee-stroyed'
+    return bug
   }
 }
 export const bugsService = new BugsService()
