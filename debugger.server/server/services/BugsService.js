@@ -16,8 +16,8 @@ class BugsService {
     return await dbContext.Bugs.create(newBug)
   }
 
-  async delete(req) {
-    const bug = await dbContext.Bugs.findOneAndDelete({ _id: req.params.id, creatorId: req.userInfo.id })
+  async close(req) {
+    const bug = await dbContext.Bugs.findOneAndUpdate({ _id: req.params.id, creatorId: req.userInfo.id })
     if (!bug) {
       throw new BadRequest('You are not the owner, or the bug is already squashed!')
     }

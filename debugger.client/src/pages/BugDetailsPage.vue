@@ -88,7 +88,7 @@ export default {
         try {
           const confirmed = NotificationService.confirm()
           if (confirmed) {
-            bugsService.delete(state.bug.id)
+            bugsService.delete(state.bug.id, state.activeBug)
           } else {
             alert('changes not saved')
           }

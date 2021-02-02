@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'
 import { logger } from '../utils/Logger'
 export default class NotificationService {
-  static async confirm(title = 'Are you sure?', text = "You won't be able to revert this!") {
+  static async confirm(title = 'Are you sure?', text = "You won't be able to open this bug again!") {
     try {
       const res = await Swal.fire({
         title: title,

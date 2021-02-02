@@ -24,8 +24,8 @@ class BugsService {
     AppState.activeBug = res.data
   }
 
-  async delete(id) {
-    await api.delete('api/bugs/' + id)
+  async close(id) {
+    await api.put('api/bugs/' + id)
     const index = AppState.bugs.findIndex(b => b.id === id)
     AppState.bugs[index].closed = true
   }
