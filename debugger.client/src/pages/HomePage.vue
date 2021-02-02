@@ -68,7 +68,9 @@ export default {
       bugs: computed(() => AppState.bugs),
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
-      newBug: {}
+      newBug: {},
+      bug: computed(() => AppState.activeBug)
+
     })
     onMounted(async() => {
       try {
@@ -81,9 +83,8 @@ export default {
       state,
       async create() {
         try {
-          const id = await bugsService.create(state.newBug)
-          logger.log(state.account.id)
-          router.push({ name: 'BugDetails', params: { id } })
+          await bugsService.create(state.newBug)
+          router.push({ name: 'BugDetails', params: { id: state.bug.id } })
         } catch (error) {
           logger.error(error)
         }
