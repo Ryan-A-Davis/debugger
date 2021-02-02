@@ -20,12 +20,9 @@
                     placeholder="Briefly describe the problem"
                     v-model="state.newBug.description"
           ></textarea>
-          <router-link :to="{name: 'BugDetails', params: {id: bugProp.id}}">
-            <button class="btn btn-success" type="submit">
-              Create
-            </button>
-            >
-          </router-link>
+          <button class="btn btn-success" type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -42,10 +39,11 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { bugsService } from '../services/BugsService'
-// import { router } from 'vue-router'
+import { useRouter } from 'vue-router'
 export default {
   name: 'Home',
   setup() {
+    const router = useRouter()
     const state = reactive({
       bugs: computed(() => AppState.bugs),
       user: computed(() => AppState.user),
@@ -63,8 +61,9 @@ export default {
       state,
       async create() {
         try {
-          await bugsService.create(state.newBug)
+          const id = await bugsService.create(state.newBug)
           logger.log(state.account.id)
+          router.push({ name: 'BugDetails', params: { id } })
         } catch (error) {
           logger.error(error)
         }

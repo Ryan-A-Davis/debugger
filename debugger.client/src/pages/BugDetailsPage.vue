@@ -60,7 +60,8 @@ export default {
       bug: computed(() => AppState.activeBug),
       account: computed(() => AppState.account),
       notes: computed(() => AppState.notes[route.params.id]),
-      newNote: {}
+      newNote: {},
+      loaded: false
     })
     onMounted(async() => {
       try {

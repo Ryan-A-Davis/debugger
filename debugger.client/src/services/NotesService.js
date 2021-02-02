@@ -20,7 +20,7 @@ class NotesService {
   async delete(id, bugId) {
     await api.delete('api/notes/' + id)
 
-    this.getAllNotes()
+    this.getAllNotes(bugId)
     // const index = AppState.notes.[bugId].findIndex(n => n.id === id)
     // AppState.notes[bugId].splice(index, 1)
   }

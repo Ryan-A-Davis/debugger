@@ -11,7 +11,6 @@ export class BugsController extends BaseController {
       .get('/:id', this.getById)
       .get('/:id/notes', this.getAllNotes)
       .post('', this.create)
-      // .put('/:id', this.edit)
       .put('/:id', this.close)
   }
 
