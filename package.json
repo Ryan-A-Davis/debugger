@@ -1,0 +1,17 @@
+{
+  "name": "debugger",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run setup:client && npm run setup:server && npm run build:client",
+    "setup:client": "cd debugger.client && npm i",
+    "setup:server": "cd debugger.server && npm i",
+    "build:client": "npm run --prefix debugger.client build",
+    "start": "node debugger.server/index.js"
+  },
+  "engines": {
+    "node": "^14.15.4"
+  },
+  "dependencies": {
+    "sweetalert2": "^10.14.0"
+  }
+}
