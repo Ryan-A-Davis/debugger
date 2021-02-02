@@ -70,7 +70,7 @@ export default {
         logger.error(error)
       }
       try {
-        await notesService.getAllNotes(state.bug.id)
+        await notesService.getAllNotes(route.params.id)
       } catch (error) {
         logger.error(error)
       } finally {

@@ -4,6 +4,7 @@ import { audience, clientId, domain } from '../AuthConfig'
 import router from '../router'
 import { setBearer } from './AxiosService'
 import { accountService } from './AccountService'
+import { bugsService } from './BugsService'
 
 export const AuthService = initialize({
   domain,
@@ -22,5 +23,8 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
   await accountService.getAccount()
   AppState.user = AuthService.user
+  if (router.currentRoute._value.name === 'BugDetails') {
+    await bugsService.getOne(router.currentRoute._value.name.id)
+  }
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
