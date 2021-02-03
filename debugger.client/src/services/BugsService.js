@@ -15,8 +15,8 @@ class BugsService {
     AppState.activeBug = res.data
   }
 
-  sort(value) {
-    this.getAll()
+  async sort(value) {
+    await this.getAll()
     logger.log(AppState.bugs)
     const filtered = AppState.bugs.filter(b => b.closed === value)
     logger.log(filtered)

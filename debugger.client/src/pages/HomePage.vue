@@ -93,6 +93,7 @@ export default {
         }
       },
       async sort() {
+        window.event.preventDefault()
         const form = window.event.target
         const response = form.sortVar.value
         let param
