@@ -89,9 +89,8 @@ export default {
 
       async close() {
         try {
-          const confirmed = NotificationService.confirm()
-          if (confirmed) {
-            bugsService.delete(state.bug.id, state.activeBug)
+          if (await NotificationService.confirm()) {
+            await bugsService.close(state.bug.id, state.activeBug)
           } else {
             alert('changes not saved')
           }

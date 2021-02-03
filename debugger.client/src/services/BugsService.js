@@ -15,6 +15,14 @@ class BugsService {
     AppState.activeBug = res.data
   }
 
+  sort(value) {
+    this.getAll()
+    logger.log(AppState.bugs)
+    const filtered = AppState.bugs.filter(b => b.closed === value)
+    logger.log(filtered)
+    AppState.bugs = filtered
+  }
+
   async create(newBug) {
     logger.log(AppState.account.id)
     newBug.creatorId = AppState.account.id
@@ -25,7 +33,8 @@ class BugsService {
   }
 
   async close(id) {
-    const data = await api.put('api/bugs/' + id)
+    const data = await api.delete('api/bugs/' + id)
+    logger.log(data)
     const index = AppState.bugs.findIndex(b => b.id === id)
     AppState.bugs[index] = data
   }

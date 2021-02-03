@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'
 import { logger } from '../utils/Logger'
 export default class NotificationService {
-  static async confirm(title = 'Are you sure?', text = "You won't be able to open this bug again!") {
+  static async confirm(title = 'Are you sure?', text = "You won't be able to reverse this action!") {
     try {
       const res = await Swal.fire({
         title: title,
@@ -10,7 +10,7 @@ export default class NotificationService {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Squash it!'
+        confirmButtonText: 'Yes, Delete it!'
       })
       logger.log(res)
       if (res.isConfirmed) {

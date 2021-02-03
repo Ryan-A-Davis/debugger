@@ -1,5 +1,5 @@
 <template>
-  <div class="notecomponent">
+  <div class="notecomponent " v-if="noteProp.creator">
     <div class="row">
       <div class="font-weight-bold">
         {{ noteProp.creator.name }}
@@ -19,6 +19,7 @@ import { computed, reactive } from 'vue'
 import { notesService } from '../services/NotesService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import NotificationService from '../services/NotificationService'
 export default {
   name: 'NoteComponent',
   props: {
@@ -31,9 +32,13 @@ export default {
     })
     return {
       state,
-      remove() {
+      async remove() {
         try {
-          notesService.delete(props.noteProp._id, props.noteProp.bugId)
+          if (await NotificationService.confirm()) {
+            await notesService.delete(props.noteProp._id, props.noteProp.bugId)
+          } else {
+            alert('Note not deleted')
+          }
         } catch (error) {
           logger.error(error)
         }

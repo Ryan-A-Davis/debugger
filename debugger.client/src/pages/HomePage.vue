@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-4 text-center my-2 py-2">
         <h1>BugLog</h1>
+        <form @submit.prevent="sort">
+          <input type="text" name="sortVar" id="sortVar" placeholder="Sort by open/closed?">
+        </form>
       </div>
       <div class="col-8">
         <form @submit.prevent="create">
@@ -88,6 +91,19 @@ export default {
         } catch (error) {
           logger.error(error)
         }
+      },
+      async sort() {
+        const form = window.event.target
+        const response = form.sortVar.value
+        let param
+        if (response === 'open') {
+          param = false
+        } else if (response === 'closed') {
+          param = true
+        } else {
+          alert('not a valid search parameter')
+        }
+        await bugsService.sort(param)
       }
     }
   }
