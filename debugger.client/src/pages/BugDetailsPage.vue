@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid" v-if="state.loaded">
-    <div class="bugDetails" v-if="state.bug.creator">
+  <div class="container-fluid" v-if="state.bug.creator">
+    <div class="bugDetails" v-if="state.loaded">
       <div class="row my-5 py-5">
         <div class="col-3">
           <h1>{{ state.bug.title }}</h1>

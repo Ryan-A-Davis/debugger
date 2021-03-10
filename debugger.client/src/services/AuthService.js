@@ -24,9 +24,11 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
   await accountService.getAccount()
   AppState.user = AuthService.user
+  console.log(router)
   if (router.currentRoute._value.name === 'BugDetails') {
-    await bugsService.getOne(router.currentRoute._value.name.id)
-    await notesService.getAllNotes(router.currentRoute._value.name.id)
+    debugger
+    await bugsService.getOne(router.currentRoute._value.params.id)
+    await notesService.getAllNotes(router.currentRoute._value.params.id)
   }
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
