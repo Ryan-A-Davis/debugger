@@ -23,6 +23,11 @@
             Home
           </router-link>
         </li>
+        <li class="nav-item">
+          <button class="btn btn-primary">
+            New Bug
+          </button>
+        </li>
       </ul>
       <span class="navbar-text">
         <button

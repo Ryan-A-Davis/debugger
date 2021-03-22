@@ -10,7 +10,7 @@
         {{ bugProp.creator.name }}
       </p>
     </td>
-    <td> <p>{{ bugProp.updatedAt }}</p></td>
+    <td> <p>{{ convertTime() }}</p></td>
     <td>
       <p v-if="bugProp.closed" class="text-danger">
         Closed
@@ -34,7 +34,8 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      convertedTime: ''
     })
     return {
       state,
@@ -44,6 +45,25 @@ export default {
         } catch (error) {
           logger.error(error)
         }
+      },
+      convertTime() {
+        const date = new Date(props.bugProp.updatedAt)
+        const month = date.getMonth()
+        const day = date.getDate()
+        const hours = date.getUTCHours()
+        const min = date.getUTCMinutes()
+        const year = date.getFullYear()
+        let dt = 'AM'
+        let h = 0
+        if (hours >= 12) {
+          h = hours - 12
+          dt = 'PM'
+        }
+        if (hours === 0) {
+          h = 12
+        }
+        state.convertedTime = month + '/' + day + '/' + year + ' ' + h + ':' + min < 10 ? '0' + min : min + ' ' + dt
+        return state.convertedTime
       }
     }
   }

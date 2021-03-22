@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="row border-dark mx-2 py-5">
-      <div class="col">
+      <div class="col border border-primary box">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -49,7 +49,7 @@
             </tr>
           </thead>
           <tbody>
-            <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" />
+            <BugComponent v-for="bug in state.bugs" :key="bug.id" :bug-prop="bug" :class="'border border-secondary'" />
           </tbody>
         </table>
       </div>
@@ -112,4 +112,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.box{
+  box-shadow: 5px 10px 8px #2db586;
+}
 </style>
