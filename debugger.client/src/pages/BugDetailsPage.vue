@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid" v-if="state.bug.creator">
     <div class="bugDetails" v-if="state.loaded">
-      <div class="row my-5 py-5">
+      <div class="row my-3">
         <div class="col-3">
-          <h1>{{ state.bug.title }}</h1>
+          <h2>{{ state.bug.title }}</h2>
           <h4>{{ state.bug.creator.name }}</h4>
         </div>
         <div class="col-2 offset-7">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="card box">
           {{ state.bug.description }}
         </div>
         <button class="btn btn-danger" @click="close">

@@ -63,6 +63,7 @@ export default {
           h = 12
         }
         state.convertedTime = month + '/' + day + '/' + year + ' ' + h + ':' + min < 10 ? '0' + min : min + ' ' + dt
+        console.log(month, day, year, h)
         return state.convertedTime
       }
     }
