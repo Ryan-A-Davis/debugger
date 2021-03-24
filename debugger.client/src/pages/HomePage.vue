@@ -101,6 +101,8 @@ export default {
           param = false
         } else if (response === 'closed') {
           param = true
+        } else if (response === 'both') {
+          param = null
         } else {
           alert('not a valid search parameter')
         }

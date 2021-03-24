@@ -16,11 +16,15 @@ class BugsService {
   }
 
   async sort(value) {
-    await this.getAll()
-    logger.log(AppState.bugs)
-    const filtered = AppState.bugs.filter(b => b.closed === value)
-    logger.log(filtered)
-    AppState.bugs = filtered
+    if (value) {
+      await this.getAll()
+      logger.log(AppState.bugs)
+      const filtered = AppState.bugs.filter(b => b.closed === value)
+      logger.log(filtered)
+      AppState.bugs = filtered
+    } else {
+      this.getAll()
+    }
   }
 
   async create(newBug) {
