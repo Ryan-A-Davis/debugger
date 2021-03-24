@@ -71,7 +71,7 @@
         </div>
       </span>
     </div>
-    <div class="modal fade" id="bugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="bugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </nav>
 </template>
 
